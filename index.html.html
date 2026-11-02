@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160d2b">
+<meta property="og:title" content="A Little Diwali Surprise ✨">
+<meta property="og:description" content="A festive little wish, made just for you. Happy Diwali!">
+<title>A Little Diwali Surprise ✨</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+:root{--gold:#ffd98a;--cream:#fff4df;--pink:#ff9dba;--bg:#160d2b}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--cream);font-family:'DM Sans',sans-serif;background:radial-gradient(circle at 50% 15%,#45204e 0,#211333 40%,#100a20 100%);overflow-x:hidden}
+.stars{position:fixed;inset:0;pointer-events:none;opacity:.7;background-image:radial-gradient(2px 2px at 20% 30%,#ffe9b8 50%,transparent 60%),radial-gradient(1px 1px at 70% 20%,#fff 50%,transparent 60%),radial-gradient(2px 2px at 80% 70%,#ffc66d 50%,transparent 60%),radial-gradient(1px 1px at 35% 80%,#fff 50%,transparent 60%);background-size:230px 210px}
+header{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,5vw,60px)}
+.brand{font-weight:700;letter-spacing:.12em;color:var(--gold);font-size:.8rem}.progress{display:flex;gap:7px}.dot{height:6px;width:22px;border-radius:9px;background:#ffffff30;transition:.3s}.dot.active{background:var(--gold);width:34px}
+main{position:relative;z-index:1;min-height:78vh;display:grid;place-items:center;padding:22px}
+.page{display:none;width:min(720px,100%);text-align:center;animation:rise .65s ease both}.page.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;font-weight:700}
+h1,h2{font-family:'Playfair Display',serif;font-weight:600;line-height:1.12;margin:16px 0}
+h1{font-size:clamp(2.7rem,8vw,5.7rem)}h2{font-size:clamp(2.1rem,6vw,3.8rem)}
+.gold{color:var(--gold)}.sub{max-width:510px;margin:18px auto;color:#e8d9eb;line-height:1.8;font-size:1.02rem}
+button{border:0;cursor:pointer;font:600 .95rem 'DM Sans',sans-serif;border-radius:999px;padding:14px 23px;transition:transform .2s,filter .2s}
+button:hover{transform:translateY(-2px);filter:brightness(1.08)}.primary{background:linear-gradient(120deg,#ffe6a7,#f6b957);color:#35172d;box-shadow:0 8px 30px #f3b64a35}.ghost{background:#ffffff12;border:1px solid #ffffff35;color:var(--cream)}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+.lamp-wrap{height:190px;display:grid;place-items:center;margin:12px auto 20px;position:relative}
+.lamp{font-size:112px;filter:drop-shadow(0 0 22px #ffad3d88);animation:glow 2s infinite alternate}
+@keyframes glow{to{filter:drop-shadow(0 0 38px #ffc45b)}}
+.flame{position:absolute;top:5px;font-size:42px;animation:flicker .7s infinite alternate}
+@keyframes flicker{to{transform:scale(1.15) rotate(4deg)}}
+.card{background:linear-gradient(145deg,#ffffff13,#ffffff08);border:1px solid #ffffff22;border-radius:26px;padding:clamp(24px,5vw,42px);box-shadow:0 20px 70px #0004;backdrop-filter:blur(10px)}
+.wish{font-family:'Playfair Display',serif;font-size:clamp(1.25rem,3vw,1.65rem);line-height:1.65;color:#fff0d6}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px auto;max-width:570px}
+.tile{padding:20px 10px;border-radius:18px;background:#ffffff10;border:1px solid #ffffff1c}.tile b{display:block;font-size:1.7rem;margin-bottom:8px}.tile span{font-size:.82rem;color:#e8d9eb}
+footer{position:relative;z-index:2;text-align:center;padding:18px;color:#b9a7c5;font-size:.78rem}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--gold);animation:burst 1.5s ease-out forwards}
+@keyframes burst{0%{transform:translate(0,0) scale(.3);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.tile{display:flex;align-items:center;gap:12px;text-align:left;padding:12px 18px}.tile b{margin:0}.lamp-wrap{height:150px}.lamp{font-size:90px}}
+</style>
+</head>
+<body>
+<div class="stars"></div><div class="confetti" id="confetti"></div>
+<header><div class="brand">✨ FESTIVE MOMENTS</div><div class="progress" id="progress"><i class="dot active"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div></header>
+<main>
+<section class="page active" data-page="0">
+ <div class="eyebrow">A tiny festive surprise</div>
+ <div class="lamp-wrap"><div class="lamp">🪔</div><div class="flame">🔥</div></div>
+ <h1>Hey, <span class="gold">Diya!</span></h1>
+ <p class="sub">The lights are glowing, the sky is sparkling… and there's a little Diwali wish waiting just for you.</p>
+ <div class="actions"><button class="primary" onclick="next()">Open your surprise ✨</button></div>
+</section>
+<section class="page" data-page="1">
+ <div class="eyebrow">Page 02 · A little light</div><h2>May your world <span class="gold">shine brighter.</span></h2>
+ <p class="sub">May this Diwali bring fresh beginnings, happy moments, peaceful days and plenty of reasons to smile.</p>
+ <div class="grid"><div class="tile"><b>🌟</b><span>Bright beginnings</span></div><div class="tile"><b>🌸</b><span>Peace & happiness</span></div><div class="tile"><b>🎉</b><span>Beautiful memories</span></div></div>
+ <div class="actions"><button class="ghost" onclick="back()">Back</button><button class="primary" onclick="next()">One more thing →</button></div>
+</section>
+<section class="page" data-page="2">
+ <div class="eyebrow">Page 03 · From the heart</div>
+ <div class="card"><div style="font-size:2.3rem">💌</div><h2>A wish for you, <span class="gold">Diya</span></h2>
+ <p class="wish">Keep shining in your own way. May every little diya remind you that even a small light can make a beautiful difference.</p>
+ <p class="sub" style="margin-bottom:0">Wishing you and your family lots of joy, warmth and prosperity.</p></div>
+ <div class="actions"><button class="ghost" onclick="back()">Back</button><button class="primary" onclick="next()">Reveal the final wish 🎇</button></div>
+</section>
+<section class="page" data-page="3">
+ <div class="eyebrow">Page 04 · The final sparkle</div><div class="lamp-wrap"><div class="lamp">🎆</div></div>
+ <h1 class="gold">Happy Diwali!</h1><p class="sub">Have a wonderful Diwali, Diya. May your days be as bright as the lights tonight. ✨</p>
+ <p style="color:#d9c4df">— With warm wishes, <strong class="gold">Nikhil</strong></p>
+ <div class="actions"><button class="primary" onclick="celebrate()">Celebrate again 🎉</button><button class="ghost" onclick="share()">Share this wish ↗</button></div>
+ <p id="shareStatus" style="font-size:.8rem;color:#cdb8d5;margin-top:15px"></p>
+</section>
+</main><footer>Made with festive vibes ✨ · A little page, a lot of good wishes</footer>
+<script>
+let current=0;const pages=[...document.querySelectorAll('.page')],dots=[...document.querySelectorAll('.dot')];
+function show(n){pages[current].classList.remove('active');current=n;pages[current].classList.add('active');dots.forEach((d,i)=>d.classList.toggle('active',i===current));window.scrollTo({top:0,behavior:'smooth'});if(n===3)burst()}
+function next(){show(Math.min(3,current+1))}function back(){show(Math.max(0,current-1))}
+function burst(){const box=document.getElementById('confetti');for(let i=0;i<42;i++){let s=document.createElement('i');s.className='spark';s.style.left=(45+Math.random()*10)+'%';s.style.top=(35+Math.random()*20)+'%';s.style.setProperty('--x',(Math.random()-.5)*innerWidth+'px');s.style.setProperty('--y',(Math.random()-.5)*innerHeight+'px');s.style.background=['#ffd98a','#ff9dba','#fff4df','#b9a7ff'][i%4];box.appendChild(s);setTimeout(()=>s.remove(),1600)}}
+function celebrate(){burst();show(0)}
+async function share(){const data={title:'A Little Diwali Surprise ✨',text:'A little Diwali wish for you, Diya! 🪔✨',url:location.href};const status=document.getElementById('shareStatus');try{if(navigator.share){await navigator.share(data)}else{await navigator.clipboard.writeText(location.href);status.textContent='Link copied! Paste it into Instagram or WhatsApp.'}}catch(e){status.textContent='You can copy this page link from your browser and share it.'}}
+</script>
+</body></html>
